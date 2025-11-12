@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Appointments - City Care Hospital</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+    }
+    
+    .header h1 {
+      color: #667eea;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    
+    .user-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    .user-info p {
+      color: #666;
+      font-size: 16px;
+    }
+    
+    .logout-btn {
+      background: #f5576c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    
+    .logout-btn:hover {
+      background: #e04555;
+    }
+    
+    .back-btn {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s;
+      margin-right: 10px;
+    }
+    
+    .back-btn:hover {
+      background: #5568d3;
+    }
+    
+    .appointments-section {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .appointments-section h2 {
+      color: #667eea;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    .appointment-card {
+      background: #f8f9fa;
+      border-left: 4px solid #667eea;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+    
+    .appointment-card:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .appointment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .appointment-header h3 {
+      color: #667eea;
+      font-size: 20px;
+      margin: 0;
+    }
+    
+    .status {
+      display: inline-block;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    
+    .status.pending {
+      background: #fff3cd;
+      color: #856404;
+    }
+    
+    .status.confirmed {
+      background: #d4edda;
+      color: #155724;
+    }
+    
+    .status.cancelled {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    
+    .status.completed {
+      background: #d1ecf1;
+      color: #0c5460;
+    }
+    
+    .appointment-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .detail-label {
+      color: #666;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    .detail-value {
+      color: #333;
+      font-size: 16px;
+    }
+    
+    .message-box {
+      margin-top: 15px;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+    }
+    
+    .message-box .detail-label {
+      margin-bottom: 8px;
+    }
+    
+    .message-box .detail-value {
+      color: #555;
+      line-height: 1.5;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #667eea;
+      font-size: 18px;
+    }
+    
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    
+    .no-data {
+      text-align: center;
+      padding: 40px;
+      color: #666;
+    }
+    
+    .no-data h3 {
+      color: #667eea;
+      margin-bottom: 10px;
+    }
+    
+    .login-prompt {
+      text-align: center;
+      padding: 60px 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    
+    .login-prompt h2 {
+      color: #667eea;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+    
+    .login-prompt p {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+    
+    .login-prompt a {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 15px 40px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    
+    .login-prompt a:hover {
+      background: #5568d3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📋 My Appointments</h1>
+      <div class="user-info" id="userInfo" style="display: none;">
+        <p>Welcome, <strong id="userName"></strong> (ID: <span id="userId"></span>)</p>
+        <div>
+          <a href="index.html" class="back-btn">← Back to Home</a>
+          <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="content"></div>
+  </div>
+  
+  <script>
+    const API_BASE = 'http://127.0.0.1:5000/api';
+    const STORAGE_KEY_USER = 'citycare_current_user';
+    
+    let currentUser = null;
+    
+    async function apiGet(url) {
+      const resp = await fetch(url, { credentials: 'include', headers: { Accept: 'application/json' } });
+      const data = await resp.json().catch(() => ({}));
+      if (!resp.ok) {
+        const message = data && data.error ? data.error : 'Request failed';
+        const err = new Error(message);
+        err.status = resp.status;
+        err.payload = data;
+        throw err;
+      }
+      return data;
+    }
+    
+    // Load stored user
+    function loadStoredUser() {
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY_USER);
+        if (stored) {
+          currentUser = JSON.parse(stored);
+          return currentUser;
+        }
+      } catch (error) {
+        console.error('Error loading user:', error);
+      }
+      return null;
+    }
+    
+    // Logout function
+    async function logout() {
+      try { await fetch(`${API_BASE}/logout`, { method: 'POST', credentials: 'include' }); } catch {}
+      localStorage.removeItem(STORAGE_KEY_USER);
+      window.location.href = 'index.html#home';
+    }
+    
+    // Format date
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+    }
+    
+    // Load appointments
+    function uniqBy(arr, keyFn) {
+      const map = new Map();
+      for (const item of arr) {
+        const key = keyFn(item);
+        if (!map.has(key)) map.set(key, item);
+      }
+      return Array.from(map.values());
+    }
+
+    async function loadAppointments() {
+      const content = document.getElementById('content');
+      
+      if (!currentUser) {
+        content.innerHTML = `
+          <div class="login-prompt">
+            <h2>🔐 Login Required</h2>
+            <p>Please login to view your appointments</p>
+            <a href="index.html#login">Go to Login</a>
+          </div>
+        `;
+        return;
+      }
+      
+      // Show user info
+      document.getElementById('userInfo').style.display = 'flex';
+      document.getElementById('userName').textContent = currentUser.name;
+      document.getElementById('userId').textContent = currentUser.id || 'N/A';
+      
+      content.innerHTML = '<div class="loading">Loading your appointments...</div>';
+      
+      try {
+        // Fetch by user_id; also fetch by email and merge if needed, to include legacy bookings
+        let byId = [];
+        let byEmail = [];
+        if (currentUser.id) {
+          try {
+            const data = await apiGet(`${API_BASE}/appointments?user_id=${encodeURIComponent(currentUser.id)}`);
+            byId = Array.isArray(data.appointments) ? data.appointments : [];
+          } catch (e) {
+            // Non-fatal; continue to email fallback
+          }
+        }
+        if (currentUser.email) {
+          try {
+            const data = await apiGet(`${API_BASE}/appointments?email=${encodeURIComponent(currentUser.email)}`);
+            byEmail = Array.isArray(data.appointments) ? data.appointments : [];
+          } catch (e) {
+            // ignore
+          }
+        }
+
+        let appointments = uniqBy([...byId, ...byEmail], (a) => a.id ?? `${a.doctor}-${a.appointment_date}-${a.appointment_time}`);
+        
+        if (appointments.length === 0) {
+          // Show a helpful debug panel when no appointments are found so it's clear
+          // whether the user object or the API responses are the reason.
+          content.innerHTML = `
+            <div class="appointments-section">
+              <div class="no-data">
+                <h3>No Appointments Found</h3>
+                <p>We couldn't find any appointments for your profile.</p>
+                <p style="color: #999; font-size: 14px; margin-top: 10px;">
+                  <strong>User ID:</strong> ${currentUser.id || 'Not set'}<br>
+                  <strong>Email:</strong> ${currentUser.email || 'Not set'}
+                </p>
+                <br>
+                <a href="index.html#appointment" class="back-btn">Book Your First Appointment</a>
+              </div>
+              <div style="margin-top:18px; padding:12px; background:#fff; border:1px solid #eee; border-radius:8px;">
+                <h4 style="margin:0 0 8px 0; color:#667eea;">Debug info</h4>
+                <pre id="debugInfo" style="white-space:pre-wrap; font-size:13px; color:#333;">Checking API responses...</pre>
+              </div>
+            </div>
+          `;
+
+          // Populate debug info asynchronously with counts from the last fetched arrays (if available)
+          (function populateDebug() {
+            const debugEl = document.getElementById('debugInfo');
+            try {
+              const byIdCount = Array.isArray(byId) ? byId.length : 0;
+              const byEmailCount = Array.isArray(byEmail) ? byEmail.length : 0;
+              const details = {
+                storedUser: currentUser || null,
+                fetchedByUserId: byIdCount,
+                fetchedByEmail: byEmailCount,
+                note: 'If both counts are 0, check that the backend running at ' + API_BASE + ' has the appointment entries and that the stored user id/email match.'
+              };
+              debugEl.textContent = JSON.stringify(details, null, 2);
+            } catch (err) {
+              if (debugEl) debugEl.textContent = 'Debug error: ' + String(err);
+            }
+          })();
+
+          return;
+        }
+        
+        let html = '<div class="appointments-section">';
+        html += `<h2>Your Appointments (${appointments.length})</h2>`;
+        
+        // Sort by date (newest first)
+        appointments.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        
+        appointments.forEach(apt => {
+          html += `
+            <div class="appointment-card">
+              <div class="appointment-header">
+                <h3>🏥 ${apt.doctor}</h3>
+                <span class="status ${apt.status}">${apt.status.toUpperCase()}</span>
+              </div>
+              <div class="appointment-details">
+                <div class="detail-item">
+                  <span class="detail-label">Appointment ID</span>
+                  <span class="detail-value">#${apt.id}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Patient Name</span>
+                  <span class="detail-value">👤 ${apt.name}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Email</span>
+                  <span class="detail-value">📧 ${apt.email}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Phone</span>
+                  <span class="detail-value">📱 ${apt.phone}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Department</span>
+                  <span class="detail-value">${apt.department || 'Not specified'}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Appointment Date</span>
+                  <span class="detail-value">📅 ${formatDate(apt.appointment_date)}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Appointment Time</span>
+                  <span class="detail-value">🕐 ${apt.appointment_time}</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Booked On</span>
+                  <span class="detail-value">${formatDate(apt.created_at)}</span>
+                </div>
+              </div>
+          `;
+          
+          if (apt.message) {
+            html += `
+              <div class="message-box">
+                <span class="detail-label">Your Message</span>
+                <div class="detail-value">${apt.message}</div>
+              </div>
+            `;
+          }
+          
+          html += '</div>';
+        });
+        
+        html += '</div>';
+        content.innerHTML = html;
+        
+      } catch (error) {
+        content.innerHTML = `
+          <div class="appointments-section">
+            <div class="error">
+              <strong>Error:</strong> ${error.message}
+              <br><br>
+              Make sure the backend server is running on http://127.0.0.1:5000
+            </div>
+          </div>
+        `;
+      }
+    }
+    
+    // Load on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadStoredUser();
+      loadAppointments();
+    });
+  </script>
+</body>
+</html>

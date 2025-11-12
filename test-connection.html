@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backend Connection Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .test-container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #005eb8;
+    }
+    button {
+      background: #005eb8;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 5px;
+    }
+    button:hover {
+      background: #004a94;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    .info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+    pre {
+      background: #f8f9fa;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h1>🔧 CityCare Hospital - Backend Connection Test</h1>
+    <p>Use this page to test if your backend server is running and accessible.</p>
+    
+    <div>
+      <button onclick="testHealth()">Test Health Endpoint</button>
+      <button onclick="testRegister()">Test Registration</button>
+      <button onclick="testLogin()">Test Login</button>
+      <button onclick="clearResults()">Clear Results</button>
+    </div>
+    
+    <div id="results"></div>
+  </div>
+
+  <script>
+    const API_BASE = 'http://127.0.0.1:5000/api';
+    const resultsDiv = document.getElementById('results');
+
+    function showResult(message, type = 'info') {
+      const resultEl = document.createElement('div');
+      resultEl.className = `result ${type}`;
+      resultEl.innerHTML = message;
+      resultsDiv.appendChild(resultEl);
+      resultsDiv.scrollTop = resultsDiv.scrollHeight;
+    }
+
+    function clearResults() {
+      resultsDiv.innerHTML = '';
+    }
+
+    async function testHealth() {
+      showResult('🔄 Testing health endpoint...', 'info');
+      
+      try {
+        const response = await fetch(`${API_BASE}/health`);
+        const data = await response.json();
+        
+        if (response.ok) {
+          showResult(`✅ SUCCESS: Backend is running!<br><pre>${JSON.stringify(data, null, 2)}</pre>`, 'success');
+        } else {
+          showResult(`⚠️ Response received but status: ${response.status}<br><pre>${JSON.stringify(data, null, 2)}</pre>`, 'error');
+        }
+      } catch (error) {
+        showResult(`❌ ERROR: Cannot reach backend server!<br>
+          <strong>Error:</strong> ${error.message}<br><br>
+          <strong>Troubleshooting:</strong><br>
+          1. Make sure the backend server is running: <code>cd backend && python app.py</code><br>
+          2. Check if server is running on http://127.0.0.1:5000<br>
+          3. Look for CORS errors in the browser console (F12)<br>
+          4. Make sure Flask and Flask-CORS are installed<br>
+          5. Check Windows Firewall settings`, 'error');
+      }
+    }
+
+    async function testRegister() {
+      showResult('🔄 Testing registration endpoint...', 'info');
+      
+      const testUser = {
+        name: 'Test User',
+        email: `test${Date.now()}@example.com`,
+        password: 'test123',
+        phone: '01712345678'
+      };
+      
+      try {
+        const response = await fetch(`${API_BASE}/register`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(testUser)
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          showResult(`✅ SUCCESS: User registered!<br>
+            <strong>Email:</strong> ${testUser.email}<br>
+            <strong>Password:</strong> ${testUser.password}<br>
+            <pre>${JSON.stringify(data, null, 2)}</pre>`, 'success');
+        } else {
+          showResult(`⚠️ Registration failed!<br><pre>${JSON.stringify(data, null, 2)}</pre>`, 'error');
+        }
+      } catch (error) {
+        showResult(`❌ ERROR: ${error.message}`, 'error');
+      }
+    }
+
+    async function testLogin() {
+      showResult('🔄 Testing login endpoint...', 'info');
+      
+      // First register a user
+      const testUser = {
+        name: 'Login Test',
+        email: `logintest${Date.now()}@example.com`,
+        password: 'test123',
+        phone: '01712345678'
+      };
+      
+      try {
+        // Register
+        const regResponse = await fetch(`${API_BASE}/register`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(testUser)
+        });
+        
+        if (!regResponse.ok) {
+          throw new Error('Registration failed for login test');
+        }
+        
+        // Now try to login
+        const loginResponse = await fetch(`${API_BASE}/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: testUser.email,
+            password: testUser.password
+          })
+        });
+        
+        const loginData = await loginResponse.json();
+        
+        if (loginResponse.ok) {
+          showResult(`✅ SUCCESS: Login working!<br>
+            <strong>Email:</strong> ${testUser.email}<br>
+            <strong>Password:</strong> ${testUser.password}<br>
+            <pre>${JSON.stringify(loginData, null, 2)}</pre>`, 'success');
+        } else {
+          showResult(`⚠️ Login failed!<br><pre>${JSON.stringify(loginData, null, 2)}</pre>`, 'error');
+        }
+      } catch (error) {
+        showResult(`❌ ERROR: ${error.message}`, 'error');
+      }
+    }
+
+    // Auto-test on load
+    window.addEventListener('DOMContentLoaded', () => {
+      showResult('📋 Backend Connection Tester Ready<br>Backend URL: <code>' + API_BASE + '</code>', 'info');
+      setTimeout(testHealth, 1000);
+    });
+  </script>
+</body>
+</html>

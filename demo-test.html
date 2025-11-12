@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CityCare Hospital - Demo Test</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    h1 {
+      color: #667eea;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .test-section {
+      margin: 30px 0;
+      padding: 25px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      border-left: 4px solid #667eea;
+    }
+    .test-section h2 {
+      color: #333;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .test-section p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      margin: 10px 10px 10px 0;
+      transition: all 0.3s;
+    }
+    button:hover {
+      background: #5568d3;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .status {
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin: 10px 0;
+      font-weight: 600;
+    }
+    .status.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .status.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    .status.info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+    pre {
+      background: #282c34;
+      color: #abb2bf;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .link-btn {
+      background: #28a745;
+    }
+    .link-btn:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏥 CityCare Hospital - Demo Test Suite</h1>
+    
+    <div class="test-section">
+      <h2>📋 Test Overview</h2>
+      <p>This page will test the complete booking flow:</p>
+      <ol style="margin-left: 20px; color: #666;">
+        <li>Register a new user</li>
+        <li>Login with the registered user</li>
+        <li>Book an appointment</li>
+        <li>View appointments in admin panel</li>
+      </ol>
+    </div>
+
+    <div class="test-section">
+      <h2>🔧 Step 1: Check Backend Connection</h2>
+      <p>First, let's verify the backend server is running...</p>
+      <button id="checkBackend">Check Backend Health</button>
+      <div id="backendStatus"></div>
+    </div>
+
+    <div class="test-section">
+      <h2>👤 Step 2: Register Test User</h2>
+      <p>Register a test user account:</p>
+      <button id="registerUser">Register User</button>
+      <div id="registerStatus"></div>
+      <pre id="registerData" style="display: none;"></pre>
+    </div>
+
+    <div class="test-section">
+      <h2>🔐 Step 3: Login</h2>
+      <p>Login with the registered user:</p>
+      <button id="loginUser" disabled>Login User</button>
+      <div id="loginStatus"></div>
+      <pre id="loginData" style="display: none;"></pre>
+    </div>
+
+    <div class="test-section">
+      <h2>📅 Step 4: Book Appointment</h2>
+      <p>Book a test appointment:</p>
+      <button id="bookAppointment" disabled>Book Appointment</button>
+      <div id="appointmentStatus"></div>
+      <pre id="appointmentData" style="display: none;"></pre>
+    </div>
+
+    <div class="test-section">
+      <h2>✅ Step 5: View Results</h2>
+      <p>View your appointments and admin panel:</p>
+      <div class="links">
+        <button class="link-btn" onclick="window.open('index.html', '_blank')">Open Main Site</button>
+        <button class="link-btn" onclick="window.open('my-appointments.html', '_blank')">View My Appointments</button>
+        <button class="link-btn" onclick="window.open('admin.html', '_blank')">Open Admin Panel</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'http://127.0.0.1:5000/api';
+    let testUser = null;
+
+    // Generate random test data
+    const timestamp = Date.now();
+    const testEmail = `test${timestamp}@citycare.com`;
+    const testData = {
+      name: 'John Doe',
+      email: testEmail,
+      password: 'Test@123',
+      phone: '01712345678'
+    };
+
+    function showStatus(elementId, message, type = 'info') {
+      const element = document.getElementById(elementId);
+      element.innerHTML = `<div class="status ${type}">${message}</div>`;
+    }
+
+    function showData(elementId, data) {
+      const element = document.getElementById(elementId);
+      element.style.display = 'block';
+      element.textContent = JSON.stringify(data, null, 2);
+    }
+
+    // Check Backend
+    document.getElementById('checkBackend').addEventListener('click', async () => {
+      try {
+        const response = await fetch(`${API_BASE}/health`);
+        const data = await response.json();
+        showStatus('backendStatus', `✅ Backend is running: ${data.message}`, 'success');
+        document.getElementById('registerUser').disabled = false;
+      } catch (error) {
+        showStatus('backendStatus', `❌ Backend is not running! Please start it first: cd backend && python app.py`, 'error');
+      }
+    });
+
+    // Register User
+    document.getElementById('registerUser').addEventListener('click', async () => {
+      try {
+        const response = await fetch(`${API_BASE}/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(testData)
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          testUser = data;
+          showStatus('registerStatus', `✅ User registered successfully! Email: ${testEmail}`, 'success');
+          showData('registerData', data);
+          document.getElementById('loginUser').disabled = false;
+        } else {
+          // If user already exists, that's okay for testing
+          if (response.status === 409) {
+            showStatus('registerStatus', `⚠️ User already exists, proceeding to login...`, 'info');
+            document.getElementById('loginUser').disabled = false;
+          } else {
+            throw new Error(data.error || 'Registration failed');
+          }
+        }
+      } catch (error) {
+        showStatus('registerStatus', `❌ Registration failed: ${error.message}`, 'error');
+      }
+    });
+
+    // Login User
+    document.getElementById('loginUser').addEventListener('click', async () => {
+      try {
+        const response = await fetch(`${API_BASE}/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: testData.email,
+            password: testData.password
+          })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          testUser = data;
+          // Store user in localStorage for the main site
+          localStorage.setItem('currentUser', JSON.stringify(data));
+          showStatus('loginStatus', `✅ Login successful! Welcome ${data.name}`, 'success');
+          showData('loginData', data);
+          document.getElementById('bookAppointment').disabled = false;
+        } else {
+          throw new Error(data.error || 'Login failed');
+        }
+      } catch (error) {
+        showStatus('loginStatus', `❌ Login failed: ${error.message}`, 'error');
+      }
+    });
+
+    // Book Appointment
+    document.getElementById('bookAppointment').addEventListener('click', async () => {
+      try {
+        // Get tomorrow's date
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const dateStr = tomorrow.toISOString().split('T')[0];
+        
+        const appointmentData = {
+          user_id: testUser.id,
+          name: testUser.name,
+          email: testUser.email,
+          phone: testUser.phone,
+          doctor: 'Dr. Anamul Haque',
+          department: 'Cardiology',
+          date: dateStr,
+          time: '10:00 AM',
+          message: 'This is a test appointment for demo purposes'
+        };
+        
+        const response = await fetch(`${API_BASE}/appointments`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(appointmentData)
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+          showStatus('appointmentStatus', `✅ Appointment booked successfully! Appointment ID: ${data.id}`, 'success');
+          showData('appointmentData', data);
+          
+          // Show next steps
+          setTimeout(() => {
+            const statusDiv = document.getElementById('appointmentStatus');
+            statusDiv.innerHTML += `
+              <div class="status info" style="margin-top: 10px;">
+                <strong>🎉 Success!</strong><br>
+                Now you can:<br>
+                • Open the main site to see your logged-in status<br>
+                • View your appointments in "My Appointments" page<br>
+                • Check admin panel to see all appointments
+              </div>
+            `;
+          }, 1000);
+        } else {
+          throw new Error(data.error || 'Booking failed');
+        }
+      } catch (error) {
+        showStatus('appointmentStatus', `❌ Booking failed: ${error.message}`, 'error');
+      }
+    });
+
+    // Auto-check backend on load
+    window.addEventListener('load', () => {
+      document.getElementById('checkBackend').click();
+    });
+  </script>
+</body>
+</html>

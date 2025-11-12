@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>City Care Hospital</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+  <!-- ===== Navbar ===== -->
+  <header class="navbar">
+    <a href="#home" class="logo" aria-label="City Care Hospital Home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg class="logo-icon" viewBox="0 0 64 64" role="img" aria-hidden="true">
+          <circle cx="20" cy="18" r="10" stroke-width="4" stroke="#ffffff" fill="none" />
+          <path d="M30 26c0 10 8 10 8 0" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <path d="M38 36v8a8 8 0 0 0 16 0v-8" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          <rect x="34" y="8" width="20" height="10" rx="5" ry="5" fill="#ffb703" />
+          <line x1="44" y1="8" x2="44" y2="18" stroke="#002b5f" stroke-width="3" stroke-linecap="round" />
+        </svg>
+      </span>
+      <span class="logo-text">
+        <span class="logo-name">City Care</span>
+      </span>
+    </a>
+    <nav id="navMenu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#doctors">Doctors</a></li>
+        <li><a href="#appointment">Appointment</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#payment">Payment</a></li>
+        <li><a href="#" id="loginLink">Login</a></li>
+      </ul>
+    </nav>
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
+      <button type="button">Search</button>
+    </div>
+    <div class="menu-toggle" id="menuToggle">☰</div>
+  </header>
+
+  <!-- ===== Home Section ===== -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="hero-pill">Compassionate Care • 24/7</span>
+          <h1>Your Health, Our Priority</h1>
+          <p>
+            Trust our multidisciplinary teams to deliver precise, personalised treatments powered by advanced
+            technology and a human-first approach.
+          </p>
+          <div class="hero-actions">
+            <a href="#appointment" class="btn">Book Appointment</a>
+            <a href="#doctors" class="btn btn-outline">Meet Our Specialists</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="stat-value">120K+</span>
+              <span class="stat-label">Patients Cared For</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-value">30+</span>
+              <span class="stat-label">Clinical Departments</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-value">15min</span>
+              <span class="stat-label">Average Triage Time</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-panels">
+          <div class="hero-card hero-card--primary">
+            <h4>Global Standards</h4>
+            <p>Internationally accredited facilities with modern equipment and highly trained medical professionals dedicated to providing world-class healthcare services.</p>
+          </div>
+          <div class="hero-card hero-card--secondary">
+            <h4>Virtual Visits</h4>
+            <p>Consult with your doctor from home, track prescriptions, and receive follow-up reminders instantly.</p>
+          </div>
+          <div class="hero-card hero-card--tertiary">
+            <h4>Care Navigators</h4>
+            <p>Dedicated coordinators guide appointments, wellness plans, and recovery steps tailored to you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+  <!-- ===== About Section ===== -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <div class="about-grid">
+      <div class="about-card about-card--intro">
+        <p>
+          City Care Hospital is dedicated to improving the health of our community by delivering compassionate,
+          state-of-the-art medical services. Our multidisciplinary teams are available 24/7 to support every
+          stage of your care journey.
+        </p>
+        <div class="about-metrics">
+          <div class="about-metric">
+            <span class="metric-value">24/7</span>
+            <span class="metric-label">Emergency Care</span>
+          </div>
+          <div class="about-metric">
+            <span class="metric-value">60+</span>
+            <span class="metric-label">Specialist Doctors</span>
+          </div>
+          <div class="about-metric">
+            <span class="metric-value">98%</span>
+            <span class="metric-label">Patient Satisfaction</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-card">
+        <h3>Our Mission</h3>
+        <p>
+          We combine cutting-edge technology with a human-first approach. Every treatment plan is personalised to
+          deliver safer procedures, faster recovery, and lasting wellness for our patients and their families.
+        </p>
+      </div>
+      <div class="about-card">
+        <h3>Expert Teams</h3>
+        <p>
+          From cardiology to oncology, our specialists collaborate daily to share insights, review cases, and
+          provide unified care that keeps you informed and confident in every decision.
+        </p>
+      </div>
+      <div class="about-card">
+        <h3>Integrated Support</h3>
+        <p>
+          Beyond the bedside, our digital tools, telehealth visits, and wellness programs help you stay connected
+          to your care team and manage your health wherever you are.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Doctors Section ===== -->
+<section id="doctors" class="doctors">
+  <h2>Our Specialist Doctors</h2>
+  <p>Meet our team of experienced professionals across various medical departments.</p>
+  <br> 
+  <div class="departments-grid">
+
+    <!-- 1. Cardiology -->
+    <div class="department">
+      <h3 class="dept-title">Cardiology </h3>
+      <div class="doctor-grid">
+  <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Anamul Haque" data-image="https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&amp;fit=crop&amp;w=900&amp;q=60" data-specialty="Senior Cardiologist" data-facebook="https://facebook.com/dr.anamulhaque" data-twitter="https://twitter.com/dr.anamulhaque" data-linkedin="https://linkedin.com/in/dr.anamulhaque">
+    <div class="doctor-avatar" style="background-image: url('https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&w=900&q=60');"></div>
+          <h3>Dr. Anamul Haque</h3>
+          <p>Senior Cardiologist</p>
+        </div>
+  <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Anika Rahman" data-image="image/Dr. Anika Rahman.jpg" data-specialty="Heart Surgeon" data-facebook="https://facebook.com/dr.anikarahman" data-twitter="https://twitter.com/dr.anikarahman" data-linkedin="https://linkedin.com/in/dr.anikarahman">
+    <div class="doctor-avatar" style="background-image: url('image/Dr. Anika Rahman.jpg');"></div>
+          <h3>Dr. Anika Rahman</h3>
+          <p>Heart Surgeon</p>
+        </div>
+  <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Tanvir Islam" data-image="image/Dr. Tanvir Islam.jpg" data-specialty="Cardiac Specialist" data-facebook="https://facebook.com/dr.tanvirislam" data-twitter="https://twitter.com/dr.tanvirislam" data-linkedin="https://linkedin.com/in/dr.tanvirislam">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Tanvir Islam.jpg');"></div>
+          <h3>Dr. Tanvir Islam</h3>
+          <p>Cardiac Specialist</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Neurology -->
+    <div class="department">
+      <h3 class="dept-title">Neurology </h3>
+      <div class="doctor-grid">
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Ahmed Rahman" data-image="image/Dr. Ahmed Rahman.png" data-specialty="Neurologist" data-facebook="https://facebook.com/dr.ahmedrahman" data-twitter="https://twitter.com/dr.ahmedrahman" data-linkedin="https://linkedin.com/in/dr.ahmedrahman">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Ahmed Rahman.png');"></div>
+          <h3>Dr. Ahmed Rahman</h3>
+          <p>Neurologist</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Samira Noor" data-image="image/Dr. Samira Noor.jpg" data-specialty="Brain Surgeon">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Samira Noor.jpg');"></div>
+          <div class="doctor-links" aria-hidden="true">
+            <span class="doctor-link facebook" title="Facebook" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 12.07C22 6.52 17.52 2 12 2S2 6.52 2 12.07c0 4.99 3.66 9.13 8.44 9.93v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.5-3.89 3.8-3.89 1.1 0 2.25.2 2.25.2v2.48h-1.27c-1.25 0-1.64.78-1.64 1.58v1.9h2.79l-.45 2.9h-2.34V22c4.78-.8 8.44-4.94 8.44-9.93Z"></path></svg>
+            </span>
+            <span class="doctor-link twitter" title="Twitter" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.53 6.46c-.77.34-1.6.57-2.46.67a4.27 4.27 0 0 0 1.87-2.36 8.54 8.54 0 0 1-2.7 1.06 4.23 4.23 0 0 0-7.2 3.86 12 12 0 0 1-8.72-4.42 4.24 4.24 0 0 0 1.31 5.65 4.2 4.2 0 0 1-1.91-.53v.05a4.24 4.24 0 0 0 3.39 4.15 4.2 4.2 0 0 1-1.9.07 4.24 4.24 0 0 0 3.95 2.94A8.5 8.5 0 0 1 3 18.58 12 12 0 0 0 9.29 20.5c7.55 0 11.68-6.29 11.68-11.75 0-.18-.01-.35-.02-.53a8.36 8.36 0 0 0 2.05-2.12Z"></path></svg>
+            </span>
+            <span class="doctor-link linkedin" title="LinkedIn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.55v-5.6c0-1.34-.02-3.07-1.87-3.07-1.88 0-2.16 1.47-2.16 2.97v5.7H9.32V9h3.4v1.56h.05c.47-.88 1.61-1.8 3.31-1.8 3.54 0 4.19 2.33 4.19 5.36v6.33ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm-1.78 13h3.56V9H3.56v11.43ZM22.23 0H1.77C.79 0 0 .78 0 1.74v20.51C0 23.22.79 24 1.77 24h20.46c.98 0 1.77-.78 1.77-1.75V1.74C24 .78 23.21 0 22.23 0Z"></path></svg>
+            </span>
+          </div>
+          <h3>Dr. Samira Noor</h3>
+          <p>Brain Surgeon</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Hasan Karim" data-image="image/Dr. Hasan Karim.jpg" data-specialty="Nerve Specialist" data-facebook="https://facebook.com/dr.hasankarim" data-twitter="https://twitter.com/dr.hasankarim" data-linkedin="https://linkedin.com/in/dr.hasankarim">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Hasan Karim.jpg');"></div>
+          <h3>Dr. Hasan Karim</h3>
+          <p>Nerve Specialist</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Pediatrics -->
+    <div class="department">
+      <h3 class="dept-title">Pediatrics </h3>
+      <div class="doctor-grid">
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Fatema Noor" data-image="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=60" data-specialty="Child Specialist" data-facebook="https://facebook.com/dr.fatemanoor" data-twitter="https://twitter.com/dr.fatemanoor" data-linkedin="https://linkedin.com/in/dr.fatemanoor">
+          <div class="doctor-avatar" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=900&q=60');"></div>
+          <h3>Dr. Fatema Noor</h3>
+          <p>Child Specialist</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Mahir Hasan" data-image="image/Dr. Mahir Hasan.jpg" data-specialty="Infant Care Expert" data-facebook="https://facebook.com/dr.mahirhasan" data-twitter="https://twitter.com/dr.mahirhasan" data-linkedin="https://linkedin.com/in/dr.mahirhasan">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Mahir Hasan.jpg');"></div>
+          <h3>Dr. Mahir Hasan</h3>
+          <p>Infant Care Expert</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Ruma" data-image="image/Dr. Ruma Begum.jpg" data-specialty="Neonatologist" data-fee="700" data-facebook="https://facebook.com/dr.rumabegum" data-twitter="https://twitter.com/dr.rumabegum" data-linkedin="https://linkedin.com/in/dr.rumabegum">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Ruma Begum.jpg');"></div>
+          <h3>Dr. Ruma</h3>
+          <p>Neonatologist</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Orthopedics -->
+    <div class="department">
+      <h3 class="dept-title">Orthopedic </h3>
+      <div class="doctor-grid">
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Ayesha Karim" data-image="image/Dr. Ayesha Karim.jpg" data-specialty="Bone & Joint Specialist" data-facebook="https://facebook.com/dr.ayesha.karim" data-twitter="https://twitter.com/dr.ayesha.karim" data-linkedin="https://linkedin.com/in/dr.ayesha.karim">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Ayesha Karim.jpg');"></div>
+          <h3>Dr. Ayesha Karim</h3>
+          <p>Bone & Joint Specialist</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Hasan Chowdhury" data-image="image/Dr. Hasan Chowdhury.jpg" data-specialty="Sports Injury Expert" data-facebook="https://facebook.com/dr.hasanchowdhury" data-twitter="https://twitter.com/dr.hasanchowdhury" data-linkedin="https://linkedin.com/in/dr.hasanchowdhury">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Hasan Chowdhury.jpg');"></div>
+          <h3>Dr. Hasan Chowdhury</h3>
+          <p>Sports Injury Expert</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Rifat Noman" data-image="image/Dr. Rifat Noman.jpg" data-specialty="Spine Surgeon" data-facebook="https://facebook.com/dr.rifatnoman" data-twitter="https://twitter.com/dr.rifatnoman" data-linkedin="https://linkedin.com/in/dr.rifatnoman">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Rifat Noman.jpg');"></div>
+          <h3>Dr. Rifat Noman</h3>
+          <p>Spine Surgeon</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Dermatology -->
+    <div class="department">
+      <h3 class="dept-title">Dermatology </h3>
+      <div class="doctor-grid">
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Nabila Sultana" data-image="image/Dr. Nabila Sultana.jpg" data-specialty="Skin Specialist" data-facebook="https://facebook.com/dr.nabilasultana" data-twitter="https://twitter.com/dr.nabilasultana" data-linkedin="https://linkedin.com/in/dr.nabilasultana">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Nabila Sultana.jpg');"></div>
+          <h3>Dr. Nabila Sultana</h3>
+          <p>Skin Specialist</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Ahmed" data-image="image/Dr. Ahmed.jpg" data-specialty="Cosmetic Dermatologist" data-facebook="https://facebook.com/dr.shafikahmed" data-twitter="https://twitter.com/dr.shafikahmed" data-linkedin="https://linkedin.com/in/dr.shafikahmed">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Ahmed.jpg');"></div>
+          <h3>Dr. Ahmed</h3>
+          <p>Cosmetic Dermatologist</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Rima Chowdhury" data-image="image/Dr. Rima Chowdhury.jpg" data-specialty="Allergy Expert" data-facebook="https://facebook.com/dr.rimachowdhury" data-twitter="https://twitter.com/dr.rimachowdhury" data-linkedin="https://linkedin.com/in/dr.rimachowdhury">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Rima Chowdhury.jpg');"></div>
+          <h3>Dr. Rima Chowdhury</h3>
+          <p>Allergy Expert</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Oncology -->
+    <div class="department">
+      <h3 class="dept-title">Oncology </h3>
+      <div class="doctor-grid">
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Saiful Islam" data-image="image/Dr. Saiful Islam.jpg" data-specialty="Cancer Specialist" data-facebook="https://facebook.com/dr.saifulislam" data-twitter="https://twitter.com/dr.saifulislam" data-linkedin="https://linkedin.com/in/dr.saifulislam">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Saiful Islam.jpg');"></div>
+          <h3>Dr. Saiful Islam</h3>
+          <p>Cancer Specialist</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Nargis Jahan" data-image="image/Dr. Nargis Jahan.jpg" data-specialty="Radiation Oncologist" data-facebook="https://facebook.com/dr.nargisjahan" data-twitter="https://twitter.com/dr.nargisjahan" data-linkedin="https://linkedin.com/in/dr.nargisjahan">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Nargis Jahan.jpg');"></div>
+          <h3>Dr. Nargis Jahan</h3>
+          <p>Radiation Oncologist</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Farhan Aziz" data-image="image/Dr. Farhan Aziz.jpg" data-specialty="Chemotherapy Specialist" data-facebook="https://facebook.com/dr.farhanaziz" data-twitter="https://twitter.com/dr.farhanaziz" data-linkedin="https://linkedin.com/in/dr.farhanaziz">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Farhan Aziz.jpg');"></div>
+          <h3>Dr. Farhan Aziz</h3>
+          <p>Chemotherapy Specialist</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Ophthalmology -->
+    <div class="department">
+      <h3 class="dept-title">Ophthalmology </h3>
+      <div class="doctor-grid">
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Shafayat Rahman" data-image="image/Dr. Shafayat Rahman.jpg" data-specialty="Eye Surgeon" data-facebook="https://facebook.com/dr.shafayatrahman" data-twitter="https://twitter.com/dr.shafayatrahman" data-linkedin="https://linkedin.com/in/dr.shafayatrahman">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Shafayat Rahman.jpg');"></div>
+          <h3>Dr. Shafayat Rahman</h3>
+          <p>Eye Surgeon</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Sumon Islam" data-image="image/Dr. Sumon Islam.jpg" data-specialty="Retina Specialist" data-facebook="https://facebook.com/dr.sumonislam" data-twitter="https://twitter.com/dr.sumonislam" data-linkedin="https://linkedin.com/in/dr.sumonislam">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Sumon Islam.jpg');"></div>
+          <h3>Dr. Sumon Islam</h3>
+          <p>Retina Specialist</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Nusrat Hossain" data-image="image/Dr. Nusrat Hossain.jpg" data-specialty="Cornea Specialist" data-facebook="https://facebook.com/dr.nusrathossain" data-twitter="https://twitter.com/dr.nusrathossain" data-linkedin="https://linkedin.com/in/dr.nusrathossain">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Nusrat Hossain.jpg');"></div>
+          <h3>Dr. Nusrat Hossain</h3>
+          <p>Cornea Specialist</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Psychiatry -->
+    <div class="department">
+      <h3 class="dept-title">Psychiatry </h3>
+      <div class="doctor-grid">
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Mahmud Hossain" data-image="image/Dr. Mahmud Hossain.jpg" data-specialty="Mental Health Specialist" data-facebook="https://facebook.com/dr.mahmudhossain" data-twitter="https://twitter.com/dr.mahmudhossain" data-linkedin="https://linkedin.com/in/dr.mahmudhossain">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Mahmud Hossain.jpg');"></div>
+          <h3>Dr. Mahmud Hossain</h3>
+          <p>Mental Health Specialist</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Farhana Alam" data-image="image/Dr. Farhana Alam.jpg" data-specialty="Clinical Psychologist" data-facebook="https://facebook.com/dr.farhanaalam" data-twitter="https://twitter.com/dr.farhanaalam" data-linkedin="https://linkedin.com/in/dr.farhanaalam">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Farhana Alam.jpg');"></div>
+          <h3>Dr. Farhana Alam</h3>
+          <p>Clinical Psychologist</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Sharmin Chowdhury" data-image="image/Dr. Sharmin Chowdhury.jpg" data-specialty="Therapist" data-facebook="https://facebook.com/dr.sharminchowdhury" data-twitter="https://twitter.com/dr.sharminchowdhury" data-linkedin="https://linkedin.com/in/dr.sharminchowdhury">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Sharmin Chowdhury.jpg');"></div>
+          <h3>Dr. Sharmin Chowdhury</h3>
+          <p>Therapist</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. Dentist -->
+    <div class="department">
+      <h3 class="dept-title">Dentist</h3>
+      <div class="doctor-grid">
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Niloy Ahmed" data-image="image/Dr. Niloy Ahmed.jpg" data-specialty="Dental Surgeon" data-facebook="https://facebook.com/dr.niloyahmed" data-twitter="https://twitter.com/dr.niloyahmed" data-linkedin="https://linkedin.com/in/dr.niloyahmed">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Niloy Ahmed.jpg');"></div>
+          <h3>Dr. Niloy Ahmed</h3>
+          <p>Dental Surgeon</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Sumiya Rahman" data-image="image/Dr. Sumiya Rahman.jpg" data-specialty="Orthodontist" data-facebook="https://facebook.com/dr.sumiyarahman" data-twitter="https://twitter.com/dr.sumiyarahman" data-linkedin="https://linkedin.com/in/dr.sumiyarahman">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Sumiya Rahman.jpg');"></div>
+          <h3>Dr. Sumiya Rahman</h3>
+          <p>Orthodontist</p>
+        </div>
+        <div class="doctor-card" onclick="openModal(this)" data-name="Dr. Arman Khan" data-image="image/Dr. Arman Khan.jpg" data-specialty="Prosthodontist" data-facebook="https://facebook.com/dr.armankhan" data-twitter="https://twitter.com/dr.armankhan" data-linkedin="https://linkedin.com/in/dr.armankhan">
+          <div class="doctor-avatar" style="background-image: url('image/Dr. Arman Khan.jpg');"></div>
+          <h3>Dr. Arman Khan</h3>
+          <p>Prosthodontist</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ===== Appointment Section ===== -->
+  <section id="appointment" class="appointment">
+    <h2>Book an Appointment</h2>
+    <p class="appointment-lede">Pick your specialist and secure a consultation slot that suits you best.</p>
+    <div class="appointment-layout">
+      <form id="appointmentForm" class="appointment-form">
+        <div class="form-row">
+          <label class="sr-only" for="appointmentName">Full Name</label>
+          <input id="appointmentName" type="text" name="name" placeholder="Full Name" required />
+        </div>
+        <div class="form-row">
+          <label class="sr-only" for="appointmentEmail">Email Address</label>
+          <input id="appointmentEmail" type="email" name="email" placeholder="Email Address" required />
+        </div>
+        <div class="form-row">
+          <label class="sr-only" for="appointmentPhone">Phone Number</label>
+          <input id="appointmentPhone" type="text" name="phone" placeholder="Phone Number" required />
+        </div>
+        <div class="form-row">
+          <label for="appointmentDoctor">Select Doctor</label>
+          <select id="appointmentDoctor" name="doctor" required>
+            <option value="">Select Doctor</option>
+            <optgroup label="Cardiology">
+              <option>Dr. Anamul Haque - Senior Cardiologist</option>
+              <option>Dr. Anika Rahman - Heart Surgeon</option>
+              <option>Dr. Tanvir Islam - Cardiac Specialist</option>
+            </optgroup>
+            <optgroup label="Neurology">
+              <option>Dr. Ahmed Rahman - Neurologist</option>
+              <option>Dr. Samira Noor - Brain Surgeon</option>
+              <option>Dr. Hasan Karim - Nerve Specialist</option>
+            </optgroup>
+            <optgroup label="Pediatrics">
+              <option>Dr. Fatema Noor - Child Specialist</option>
+              <option>Dr. Mahir Hasan - Infant Care Expert</option>
+              <option>Dr. Ruma - Neonatologist</option>
+            </optgroup>
+            <optgroup label="Orthopedics">
+              <option>Dr. Ayesha Karim - Bone & Joint Specialist</option>
+              <option>Dr. Hasan Chowdhury - Sports Injury Expert</option>
+              <option>Dr. Rifat Noman - Spine Surgeon</option>
+            </optgroup>
+            <optgroup label="Dermatology">
+              <option>Dr. Nabila Sultana - Skin Specialist</option>
+              <option>Dr. Ahmed - Cosmetic Dermatologist</option>
+              <option>Dr. Rima Chowdhury - Allergy Expert</option>
+            </optgroup>
+            <optgroup label="Oncology">
+              <option>Dr. Saiful Islam - Cancer Specialist</option>
+              <option>Dr. Nargis Jahan - Radiation Oncologist</option>
+              <option>Dr. Farhan Aziz - Chemotherapy Specialist</option>
+            </optgroup>
+            <optgroup label="Ophthalmology">
+              <option>Dr. Shafayat Rahman - Eye Surgeon</option>
+              <option>Dr. Sumon Islam - Retina Specialist</option>
+              <option>Dr. Nusrat Hossain - Cornea Specialist</option>
+            </optgroup>
+            <optgroup label="Psychiatry">
+              <option>Dr. Mahmud Hossain - Mental Health Specialist</option>
+              <option>Dr. Farhana Alam - Clinical Psychologist</option>
+              <option>Dr. Sharmin Chowdhury - Therapist</option>
+            </optgroup>
+            <optgroup label="Dentist">
+              <option>Dr. Niloy Ahmed - Dental Surgeon</option>
+              <option>Dr. Sumiya Rahman - Orthodontist</option>
+              <option>Dr. Arman Khan - Prosthodontist</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="form-row form-grid">
+          <div>
+            <label for="appointmentTime">Select Time Slot</label>
+            <select id="appointmentTime" name="time" required>
+              <option value="">Select Time Slot</option>
+              <option>9:00 AM</option>
+              <option>10:00 AM</option>
+              <option>11:00 AM</option>
+              <option>12:00 PM</option>
+              <option>1:00 PM</option>
+              <option>2:00 PM</option>
+              <option>3:00 PM</option>
+              <option>4:00 PM</option>
+              <option>5:00 PM</option>
+            </select>
+          </div>
+          <div>
+            <label for="appointmentDate">Preferred Date</label>
+            <input id="appointmentDate" type="date" name="date" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="sr-only" for="appointmentMessage">Message</label>
+          <textarea id="appointmentMessage" name="message" placeholder="Notes for your consultant"></textarea>
+        </div>
+        <button type="submit" class="btn">Confirm Appointment</button>
+      </form>
+      <div class="appointment-showcase" id="appointmentCatalog" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ===== Blog Section ===== -->
+  <section id="blog" class="blog">
+    <h2>Latest Health Articles</h2>
+    <div class="blog-grid">
+      <a href="#" class="blog-card">
+        <div class="blog-media" style="background-image: url('https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=900&q=60');" aria-hidden="true"></div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Cardiology</span>
+          <h3>3 Tips for a Healthy Heart</h3>
+          <p>Adopt simple routines that keep your cardiovascular system strong and resilient every day.</p>
+        </div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-media" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=60');" aria-hidden="true"></div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Nutrition</span>
+          <h3>Eating Smart: Balanced Nutrition</h3>
+          <p>Build colourful plates with the right portions of protein, carbs, and healthy fats.</p>
+        </div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-media" style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=60');" aria-hidden="true"></div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Innovation</span>
+          <h3>Telemedicine: Care from Anywhere</h3>
+          <p>Prepare for video visits, share records securely, and get quality care without the travel.</p>
+        </div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-media" style="background-image: url('https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=900&q=60');" aria-hidden="true"></div>
+        <div class="blog-card-body">
+          <span class="blog-tag">Lifestyle</span>
+          <h3>Better Sleep, Better Health</h3>
+          <p>Wind-down routines and environment tweaks that help you fall asleep faster and stay asleep.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== Payment Section ===== -->
+  <section id="payment" class="payment">
+    <h2>Online Payment</h2>
+    <div class="payment-grid">
+      <div class="payment-copy">
+        <p>Choose your preferred method—credit, mobile wallet, or instant bank transfer—and pay securely in seconds.</p>
+        <ul class="payment-list">
+          <li>PCI-DSS compliant gateway with multi-factor verification</li>
+          <li>Instant receipts emailed to your registered address</li>
+          <li>Supports partial payments and insurance top-ups</li>
+        </ul>
+        <a href="#" class="btn" id="payNowBtn">Pay Now</a>
+      </div>
+      <div class="payment-showcase">
+        <div class="gateway-card primary" style="background-image: url('https://images.unsplash.com/photo-1586880244406-556ebe35f282?auto=format&fit=crop&w=900&q=60');">
+          <div class="gateway-overlay">
+            <h3>Smart Cards</h3>
+            <p>Visa • MasterCard</p>
+          </div>
+        </div>
+        <div class="gateway-card mobile">
+          <div class="gateway-overlay">
+            <h3>Mobile Payments</h3>
+            <p>Tap to pay with your preferred wallet</p>
+            <div class="wallet-badges" aria-hidden="true">
+              <span class="wallet-badge">bKash</span>
+              <span class="wallet-badge">Nagad</span>
+              <span class="wallet-badge">Rocket</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Profile Section ===== -->
+  <section id="profile" class="profile" style="display: none;">
+    <h2>My Profile</h2>
+    <div id="profileContent">
+      <div id="userInfo" style="display: none;">
+        <h3>Welcome, <span id="userName"></span>!</h3>
+        <p>Email: <span id="userEmail"></span></p>
+        <p>Phone: <span id="userPhone"></span></p>
+  <button id="profileLogoutBtn" class="btn">Logout</button>
+      </div>
+      <div id="loginPrompt">
+        <p>Please <a href="#" id="loginPromptLink">login</a> to view your profile and appointments.</p>
+      </div>
+      <div id="appointmentsSection" style="display: none;">
+        <h3>📋 Your Appointments</h3>
+        <p style="color: #666; margin-bottom: 15px;">View and manage all your booked appointments</p>
+        <button id="loadAppointments">🔄 Load My Appointments</button>
+        <div id="appointmentsList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>© 2025 City Care Hospital | Contact: +88 01712345678</p>
+  </footer>
+
+  <!-- Blog Modal -->
+  <div id="blogModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="blogClose">&times;</span>
+      <img id="blogModalImage" src="" alt="Article Image" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 20px;">
+      <h2 id="blogModalTitle"></h2>
+      <div id="blogModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="loginClose">&times;</span>
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <p>Don't have an account? <a href="#" id="showRegister">Register here</a></p>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="registerClose">&times;</span>
+      <h2>Register</h2>
+      <form id="registerForm">
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="text" name="phone" placeholder="Phone Number" required />
+        <button type="submit" class="btn">Create Account</button>
+      </form>
+      <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
+    </div>
+  </div>
+
+  <!-- Payment Modal -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="paymentClose">&times;</span>
+      <h2>Complete Payment</h2>
+      <form id="paymentForm">
+        <input type="text" name="payerName" placeholder="Payer Name" autocomplete="name" required />
+        <input type="email" name="payerEmail" placeholder="Email Receipt" autocomplete="email" required />
+        <fieldset class="payment-methods">
+          <legend>Select Payment Method</legend>
+          <div class="method-options-grid">
+            <label class="method-option active">
+              <input type="radio" name="paymentMethod" value="card" checked />
+              Card Payment
+            </label>
+            <label class="method-option">
+              <input type="radio" name="paymentMethod" value="mobile" />
+              Mobile Payment (bKash / Nagad)
+            </label>
+          </div>
+        </fieldset>
+        <div class="card-fields">
+          <input type="text" name="cardNumber" placeholder="Card Number" inputmode="numeric" maxlength="19" autocomplete="cc-number" required />
+          <input type="text" name="expiry" placeholder="Expiry (MM/YY)" pattern="\d{2}/\d{2}" inputmode="numeric" autocomplete="cc-exp" required />
+          <input type="password" name="cvv" placeholder="CVV" inputmode="numeric" maxlength="4" autocomplete="cc-csc" required />
+        </div>
+        <div class="mobile-fields" hidden>
+          <h4>Mobile Payment Details</h4>
+          <select name="mobileProvider" required>
+            <option value="" disabled selected>Select Wallet Provider</option>
+            <option value="bkash">bKash</option>
+            <option value="nagad">Nagad</option>
+            <option value="rocket">Rocket</option>
+          </select>
+          <input type="tel" name="mobileAccount" placeholder="Wallet Account Number" inputmode="numeric" maxlength="15" required />
+          <input type="text" name="mobileReference" placeholder="Payment Reference" maxlength="20" required />
+        </div>
+  <input type="number" name="amount" placeholder="Amount (BDT)" min="1" step="0.01" required />
+        <button type="submit" class="btn">Process Payment</button>
+      </form>
+      <p class="payment-note">Demo only: no real transactions are processed.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
